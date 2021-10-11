@@ -6,6 +6,11 @@
   height: 40vmin;
   pointer-events: none;
 }
+body{
+  background-color:black;
+  color:white;
+  }
+  ::placeholder{color:white;}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

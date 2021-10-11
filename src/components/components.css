@@ -1,0 +1,114 @@
+
+.MuiFormLabel-root {
+    color: #1976d2 !important;
+  }
+  .css-ghsjzk-MuiInputBase-root-MuiInput-root:after {
+    border-bottom: 2px solid #1976d2 !important;
+  }
+  .css-ghsjzk-MuiInputBase-root-MuiInput-root:before {
+    border-bottom: 1px solid #fff !important;
+  }
+  .submit{
+      background-color: #fff;
+      color:black;
+      width:100%;
+}
+.income{
+    background-color:white;
+    color:black;
+    margin-top:50px !important;
+    margin-bottom:50px !important;
+    border-radius: 10px;
+}
+.expense{
+  background-color: red;
+  color:white;
+  margin-top:50px !important;
+  margin-bottom:50px !important;
+  border-radius: 10px;
+}
+h3{
+    text-align:center;
+}
+.appHeading{
+    padding-left:100px;
+}
+.link{
+  text-decoration: none;
+  color:white;
+}
+.history{
+  width:1140px;
+  margin:auto;
+  margin-top:100px;
+}
+.historyhead{
+  width:1140px;
+  margin:auto;
+  color:white  !important
+}
+.historyheadhome{
+  color:white !important;
+}
+.css-cnd76u-MuiPaper-root {
+  color:black !important;
+  font-weight: 600 !important;
+}
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  color:white !important;
+}
+.fu{
+  margin-bottom:60px;
+}
+.css-1480iag-MuiInputBase-root-MuiInput-root:before {
+  border-bottom: 1px solid white !important;
+}
+.css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
+  color:white !important;
+}
+.select{
+  min-width: 100% !important;
+  margin:0px !important;
+}
+.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input.css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input {
+ color: white;
+}
+#myList li{
+  list-style-type: none !important;
+}
+.incomeHis .css-og52vs-MuiTableCell-root.MuiTableCell-head {
+  background-color: green !important;
+}
+.expenseHis .css-og52vs-MuiTableCell-root.MuiTableCell-head {
+  background-color: red !important;
+}
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  color:black !important;
+}
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover {
+  color:red  !important;
+}
+.submit{
+  background-color:green !important;
+}
+.submitex{
+  background-color:red !important;
+  width:100% !important;
+}
+.expenseHis{
+background-color:red !important;
+}
+.incomehishead{
+  margin-bottom:30px !important;
+  margin-top:30px !important;
+  color:green;
+}
+.expensehishead{
+  margin-bottom:30px !important;
+  margin-top:30px !important;
+  color:red;
+}
+.clearHis{
+  margin-top:50px !important;
+  margin-bottom:50px !important;
+}
