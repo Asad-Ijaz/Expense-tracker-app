@@ -5,7 +5,7 @@ import History from '../components/history'
 
 function RouterApp(){
     return(
-        <Router>
+        <Router basename="/Expense-tracker-app">
             <Route exact path='/' component={Home}/>
             <Route exact path='/history' component={History}/>
         </Router>
