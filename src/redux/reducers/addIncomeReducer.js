@@ -1,92 +1,66 @@
-// let incomeArray=['javed','wajid'];
-//let incomeArray=[];
+let income = {
+  month:"february",
+  salary:"0.00",
+  date:new Date().toLocaleString(),
+  incomes: [],
+  incomeTotal:0,
+  mont:"january",
+  expense:'0.00',
+  expenseHistoryArray:[],
+  expenseTotal:0,
+  total:0,
+ }
+function addIncomeReducer(state = income, action) {
+console.log('data in reducer',action);
+ state = { ...state };
+ console.log('initialState', state);
 
-let user1=[];
-let income={
-month:"apple",
-salary:"0.00",
-//incomeArray:[],
-date:new Date(),
-income:0,
-user1:[],
-id:0,
+ switch (action.type) {
 
+   case "add_Income":
+     console.log('add_Income_type',action);
+     let data = action.payload;
+     let historyArrayData ={
+       salary:data.salary,
+       month:data.month,
+       date:data.date,
+       }
+     state.month = data.month;
+     state.salary = data.salary;
+     state.incomes = state.incomes.concat(historyArrayData);
+     state.total = parseInt(state.total)+parseInt(state.salary);
 
-}
-
-
-//const data={user:[]}
-
-
-
-// function addIncomeReducer(initialState=income, Action){
-  function addIncomeReducer(initialState=income, Action){
-  //const[incomeArray,setIncomeArray]= useState([]);
-//console.log(user1);
-
-  initialState = {...initialState};
-  console.log('initialState',initialState);
-
-  // const[incomeArray,setIncomeArray]= useState([]);
-          switch (Action.type){
-             case "add_Income":
-               let data2= Action.payload;
-               console.log('data in addIncomeReducer',data2 );
-               let film ={
-                         month:data2.month,
-                         salary:data2.salary,
-                        };
-              // let incomeArra={incomeArray:incomeArra.concat(film)}
-               let obectti={
-
-                // incomeArray:data2.incomeArray,
-                 month:data2.month,
-                 salary:data2.salary,
-                 //incomeArray:incomeArray.push(data2),
-                //  incomeArray:[...incomeArray,data2],
-                 income:data2.income,
-                 id:data2.id,
-                 //user1:[...user1, data2],
-                 // user1:user1.concat(data2),
-                //  user1:[...user1,data2],
-                 
-              //    //incomeArray:[...incomeArray,film],
-              //   //  initialState,
-                
-              //   //  incomeArray:incomeArray.push('james'),
-               
-                user1:[...user1, data2],
-                
-                
-                 }
-                 
-                 //data.user.push(data2);
-                 user1=[...user1, data2]; 
-                 //console.log(ur);
-                //user1=[ user1.filter((item)=>( ur.find(item1=>(item.month == item1.month && item.salary == item1.salary))))];
-                // console.log('data in reducer',user1);
-               
-                // console.log('indomeArray',incomeArray);
-               return obectti;          
-                
-               
-               
-                //obectti;
-               
-              //  case "add_array":
-              //  let data6= Action.payload;
-              //  let arrayAction={
-              //  month:data2.month,
-              //  salary:data2.salary,
-              //  incomeArray:data2.incomeArray,
-              //  income:data2.income,
-              //  }
-              //  user1.push(data2);
-              //  return arrayAction;
-             default:
-               return initialState;
-          }
+    return state;
+    case "DELETE_INCOME":
+     state.incomes.splice(action.payload,1);
+     state.total=parseInt(state.total)-parseInt(action.amount);
+     state.salary=action.amount;
+     return state;
+    case "add_expense":
+      let expenseArrayData = {
+      mont:action.payload.mont,
+      expense:action.payload.expense,
+      date:state.date,
+      }
+      state.expenseHistoryArray=state.expenseHistoryArray.concat(expenseArrayData);
+      state.mont=action.payload.mont;
+      state.expense= action.payload.expense;
+      state.total = parseInt(state.total)-parseInt(state.expense);
+      return state;
+      case "DELETE_EXPENSE-ITEM":
+     state.expenseHistoryArray.splice(action.payload,1);
+     state.total=parseInt(state.total)+parseInt(action.expense);
+     state.expense=action.expense;
+     return state;
+     case "clear_All_History":
+       state.incomes=[];
+       state.expenseHistoryArray=[];
    
+   default:
+     return state;
+ }
 
+
+ 
 }
 export default addIncomeReducer;

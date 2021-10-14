@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {useDispatch} from 'react-redux'
 import incomeAction from '../redux/actions/incomeAction'
 import '../components/components.css'
 import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles'
 import Paper from '@mui/material/Paper';
@@ -24,80 +25,51 @@ function AddIncome(){
   const dispatch = useDispatch();
   let [month,setMonth]= useState('');
   let [salary,setSalary] = useState('');
-  let [id,setId] = useState(-1);
-let [income,setIncome] = useState(0);
-//const[incomeArray,setIncomeArray]=useState([]);
-//console.log(incomeArray);
-//console.log(incomeArray);
-const[date,setDate]= useState(new Date().toLocaleString());
+  let[date,setDate]= useState(new Date().toLocaleString());
+
+
 function CtaHandler(e){
- 
-    e.preventDefault();
-   let data1 ={
-     salary,
-     month,
-     date,
-   }
-    
+  e.preventDefault();
      setDate(new Date().toLocaleString());
-
-
-     
-       // setIncomeArray([...incomeArray,data1]);
-        // (incomeArray.concat(data1));
-  
-   //console.log(incomeArray)
-
-setId(id=id+1);
-     setIncome(income=(parseInt(income)+parseInt(salary)));
-     let data10={
+     let incomeData={
        salary,
        month,
        date,
-       income,
-       id,
-       //incomeArray,
-       
-       
-      }
-      //console.log('income',incomeArray);
-      // setIncomeArray({incomeArray:incomeArray.concat(data1)});
+        }
 
-   console.log('data in component', data10);
-  //  setIncomeArray(...incomeArray,data1);
-   dispatch(incomeAction(data10));
-   //dispatch(incomeAction(data10));
+   console.log('data in component', incomeData);
+ 
+   dispatch(incomeAction(incomeData));
+   
     setSalary(salary='');
     setMonth(month='');
    
 }
-
-
-
-    return(
-           
-              <Grid container spacing={2}>
-                  <Grid item md={3}></Grid>
-                <Grid item xs={6}>
+return(
+  <Container fixed>
+           <Grid container spacing={2}>
+                  <Grid item md={2} sm={0} xs={0}></Grid>
+                <Grid item md={8} sm={12} xs={12}>
                  
                   <Item>Add Income Transaction</Item>
-                  <Divider/><br/><br/>
+                  <Divider/><br/>
                   <div>
-                  <FormControl variant="standard" className="select" sx={{ m: 1,  }}>
-        <InputLabel id="demo-simple-select-standard-label">Select Month</InputLabel>
+                  <FormControl required variant="standard" className="select textfield " sx={{ m: 1,  }}>
+        <InputLabel isRequired="true" ClassName="textfield" required={true} id="demo-simple-select-standard-label">Select Month</InputLabel>
         <Select
+        className="jan"
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
            value={month}
            onChange={(e) =>{
             setMonth(e.target.value)}}
-           required
+           
 
            label="month"
-           required
+           
         >
          
-          <MenuItem value={'January'}>January</MenuItem>
+          <MenuItem  value={'January'}>January</MenuItem>
           <MenuItem value={'February'}>February</MenuItem>
           <MenuItem value={'March'}>March</MenuItem>
           <MenuItem value={'April'}>April</MenuItem>
@@ -113,27 +85,20 @@ setId(id=id+1);
       </FormControl>
      
     </div>
-                  
-                  {/* <TextField InputLabelProps={{style : {color : 'white'} }}  fullWidth name="name" id="text" label="Enter Month" value={month} onChange={(e) =>
-                    {
-                      // setIncomeArray([...incomeArray, e.target.value]);
-                     setMonth(e.target.value)} } variant="standard" /><br/><br/> */}
-                  <TextField fullWidth name="amount"id="income" label="Enter Salary" required value={salary} 
+    <br/>
+                
+                  <TextField required={true} type="number" className="textfield" fullWidth name="amount"id="income" isRequired="true" label="Enter Salary"  value={salary} 
                    onChange={(e) =>{
-                    setSalary(e.target.value);
-                    //  setIncomeArray([...incomeArray, e.target.value]);
-           
-          }}  variant="standard" />
+                    setSalary(e.target.value);}}  variant="standard" />
                    <br/><br/><br/>
                    <Button variant="contained" className="submit" type="submit"
                     onClick={ CtaHandler } >Submit</Button>
                    
-                   
-                </Grid>
-                <Grid item md={3}></Grid>
+                   </Grid>
+                <Grid item md={2} sm={0} xs={0}></Grid>
                
               </Grid>
-            
+            </Container>
           
         
     )

@@ -1,9 +1,5 @@
 import React from  'react'
-import {useSelector} from 'react-redux'
-//import '../components/components.css'
-import {Link} from 'react-router-dom'
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
+import {useSelector,useDispatch} from 'react-redux'
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { styled } from '@mui/material/styles'
@@ -16,9 +12,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 function ExpenseHistory(){
+  const dispatch = useDispatch();
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
-          backgroundColor: theme.palette.common.black,
+         
           color: theme.palette.common.white,
         },
         [`&.${tableCellClasses.body}`]: {
@@ -35,45 +32,39 @@ function ExpenseHistory(){
           border: 0,
         },
       }));
-      function dltHistory(e){
-        var tbod=document.getElementById('tbod');
-        tbod.innerHTML="";
-         // v.currentTarget.parentNode.parentNode.remove()
-        }
+      
     return(
-        <div>
-         <Button className="clearHis" variant="contained" onClick={dltHistory}>Clear History</Button>
+      <Typography>
         <TableContainer component={Paper}>
       <Table sx={{ minWidth: 550 }} aria-label="customized table">
         <TableHead className="expenseHis">
           <TableRow >
-          <StyledTableCell align="center">No:</StyledTableCell>
-            <StyledTableCell align="center">Goods</StyledTableCell>
-            <StyledTableCell align="center">Expense</StyledTableCell>
-            <StyledTableCell align="center">Date</StyledTableCell>
-            <StyledTableCell align="center">Delete</StyledTableCell>
+            <StyledTableCell className="theadrow" align="center">Month</StyledTableCell>
+            <StyledTableCell className="theadrow" align="center">Expense</StyledTableCell>
+            <StyledTableCell className="theadrow" align="center">Date</StyledTableCell>
+            <StyledTableCell className="theadrow" align="center">Delete</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody id="tbod">
-          {useSelector(store=>store.addExpenseReducer.usedArray.map((item,index) => (
+          {useSelector(store=>store.addIncomeReducer.expenseHistoryArray.map((item,index) => (
             <StyledTableRow >
-              {/* <StyledTableCell component="th" scope="row">
-                {item.month}
-              </StyledTableCell> */}
-              <StyledTableCell align="center">{index}</StyledTableCell>
-              <StyledTableCell align="center">{item.goods}</StyledTableCell>
+              <StyledTableCell align="center">{item.mont}</StyledTableCell>
               <StyledTableCell align="center">{item.expense}</StyledTableCell>
               <StyledTableCell align="center">{item.date}</StyledTableCell>
-              <StyledTableCell align="center"><Button variant="text" startIcon={<DeleteIcon />} onClick={(v)=>{
-    return store.addExpenseReducer.usedArray.splice(index,1),
-              v.currentTarget.parentNode.parentNode.remove()}}>
+              <StyledTableCell align="center"><Button className="delete" variant="text" startIcon={<DeleteIcon />} onClick={(v)=>{
+                dispatch({
+                  type:"DELETE_EXPENSE-ITEM",
+                  payload:index,
+                  expense:item.expense,
+                })
+    }}>
               </Button></StyledTableCell>
             </StyledTableRow>
           )))}
         </TableBody>
       </Table>
     </TableContainer>
-    </div>
+    </Typography>
 
     )
 }
